@@ -15,9 +15,9 @@ An interactive educational web application that demonstrates the First In, First
 
 ### 📊 Visual Features
 - **Color-coded Frame States**: 
-  - 🟢 Green: Page Hit
-  - 🔴 Red: Page Fault/Miss
-  - 🟡 Yellow: Page Replacement
+  - 🟢 **Green**: Page Hit
+  - 🔴 **Red**: Page Fault/Miss
+  - 🟡 **Yellow**: Page Replacement
 - **FIFO Order Indication**: Visual markers showing oldest frame for replacement
 - **Real-time Statistics**: Page fault count and fault rate percentage
 - **Responsive Design**: Optimized for desktop, tablet, and mobile devices
@@ -42,29 +42,42 @@ An interactive educational web application that demonstrates the First In, First
 - No installation or server required
 
 ### Usage
-1. **Open the Application**: Simply open `index.html` in your web browser
-2. **Configure Simulation**: 
-   - Enter number of memory frames (1-10)
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/SakethVetcha/os-project-fifo.git
+   cd os-project-fifo
+   ```
+
+2. **Open the Application**
+   - Simply open `index.html` in your web browser
+
+3. **Configure Simulation**
+   - Enter number of memory frames (1–10)
    - Input page reference sequence (comma-separated integers)
-3. **Initialize**: Click "Initialize Simulation" to set up the visualization
-4. **Control Animation**:
+
+4. **Initialize**
+   - Click "Initialize Simulation" to set up the visualization
+
+5. **Control Animation**
    - Use Start/Pause for automatic progression
    - Use Step Forward/Backward for manual control
    - Adjust speed with the slider
-5. **Export Results**: Save screenshots or execution traces for analysis
+
+6. **Export Results**
+   - Save screenshots or execution traces for analysis
 
 ### Example Scenarios
-```
-Classic FIFO Example:
+
+**Classic FIFO Example:**
 - Frames: 3
-- Page References: 1,2,3,4,1,2,5,1,2,3,4,5
+- Page References: `1,2,3,4,1,2,5,1,2,3,4,5`
 - Expected Faults: 9
 
-Worst Case Scenario:
+**Worst Case Scenario:**
 - Frames: 2  
-- Page References: 1,2,3,1,2,3
+- Page References: `1,2,3,1,2,3`
 - Expected Faults: 6 (every access is a fault)
-```
 
 ## Technical Architecture
 
@@ -168,13 +181,13 @@ Access these functions in the browser console:
 
 ```javascript
 // Generate comprehensive testing report
-window.generateTestingReport()
+window.generateTestingReport();
 
 // Validate standards compliance
-window.validateStandardsCompliance()
+window.validateStandardsCompliance();
 
 // Check final requirements checklist
-window.createFinalTestingChecklist()
+window.createFinalTestingChecklist();
 ```
 
 ### Performance Monitoring
