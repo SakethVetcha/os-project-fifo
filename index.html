@@ -19,9 +19,6 @@
             <section class="input-section">
                 <div class="section-header">
                     <h2>Configuration</h2>
-                    <button class="help-btn" onclick="showContextualHelp('configuration')" title="Get help with configuration">
-                        <span class="help-icon">?</span>
-                    </button>
                 </div>
                 <form id="simulation-form">
                     <div class="input-group">
@@ -51,9 +48,6 @@
             <section class="controls-section">
                 <div class="section-header">
                     <h2>Animation Controls</h2>
-                    <button class="help-btn" onclick="showContextualHelp('animation')" title="Get help with animation controls">
-                        <span class="help-icon">?</span>
-                    </button>
                 </div>
                 <div class="control-panel" role="group" aria-label="Animation Controls">
                     <button id="start-btn" class="control-btn" disabled 
@@ -88,12 +82,9 @@
             <section class="visualization-section">
                 <div class="section-header">
                     <h2>Memory Frame Visualization</h2>
-                    <button class="help-btn" onclick="showContextualHelp('visualization')" title="Get help understanding the visualization">
-                        <span class="help-icon">?</span>
-                    </button>
                 </div>
                 <div class="canvas-container">
-                    <canvas id="simulation-canvas" width="800" height="400" 
+                    <canvas id="simulation-canvas" width="1200" height="400" 
                             aria-label="FIFO Page Replacement Algorithm Visualization"
                             role="img"
                             tabindex="0">
@@ -121,47 +112,10 @@
                     </div>
                 </div>
                 
-                <!-- Step-by-step explanation display -->
-                <div class="step-explanation">
-                    <h3>Algorithm Operation</h3>
-                    <div id="operation-explanation" class="explanation-text">
-                        Initialize the simulation to see step-by-step explanations of the FIFO algorithm operations.
-                    </div>
-                    <div class="operation-details">
-                        <div class="detail-item">
-                            <span class="detail-label">Operation Type:</span>
-                            <span id="operation-type" class="operation-badge">-</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Frame Modified:</span>
-                            <span id="modified-frame">-</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Previous Value:</span>
-                            <span id="previous-value">-</span>
-                        </div>
-                    </div>
-                </div>
+
             </section>
 
-            <!-- Legend Section -->
-            <section class="legend-section">
-                <h3>Color Legend</h3>
-                <div class="legend-items">
-                    <div class="legend-item">
-                        <div class="color-box hit"></div>
-                        <span>Page Hit (Green)</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="color-box miss"></div>
-                        <span>Page Miss/Fault (Red)</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="color-box replacement"></div>
-                        <span>Page Replacement (Yellow)</span>
-                    </div>
-                </div>
-            </section>
+
 
             <!-- Export Section -->
             <section class="export-section">
@@ -172,209 +126,26 @@
                 </div>
             </section>
 
-            <!-- Instructions Section -->
-            <section class="instructions-section">
-                <div class="instructions-header">
-                    <h2>How to Use This Simulator</h2>
-                    <button id="toggle-instructions-btn" class="toggle-btn" aria-expanded="true" aria-controls="instructions-content">
-                        <span class="toggle-icon">▼</span>
-                        <span class="toggle-text">Hide Instructions</span>
-                    </button>
-                </div>
-                
-                <div id="instructions-content" class="instructions-content">
-                    <!-- Quick Start Guide -->
-                    <div class="quick-start">
-                        <h3>Quick Start Guide</h3>
-                        <ol class="quick-steps">
-                            <li><strong>Configure:</strong> Set memory frames (1-10) and page references (comma-separated numbers)</li>
-                            <li><strong>Initialize:</strong> Click "Initialize Simulation" to prepare the visualization</li>
-                            <li><strong>Run:</strong> Use "Start" for automatic animation or "Step Forward/Backward" for manual control</li>
-                            <li><strong>Analyze:</strong> Watch the color-coded frames and read the step explanations</li>
-                            <li><strong>Export:</strong> Save screenshots or execution traces for further study</li>
-                        </ol>
+            <!-- Examples Section -->
+            <section class="examples-section">
+                <h3>Try These Examples</h3>
+                <div class="example-scenarios">
+                    <div class="example-scenario">
+                        <h4>📚 Classic Example</h4>
+                        <p><strong>Frames:</strong> 3 | <strong>References:</strong> 1,2,3,4,1,2,5,1,2,3,4,5</p>
+                        <button class="load-example-btn" data-frames="3" data-references="1,2,3,4,1,2,5,1,2,3,4,5">Load This Example</button>
                     </div>
-
-                    <!-- Detailed Instructions -->
-                    <div class="detailed-instructions">
-                        <h3>Detailed Instructions</h3>
-                        
-                        <div class="instruction-category">
-                            <h4>🔧 Configuration</h4>
-                            <div class="instruction-step">
-                                <h5>Memory Frames</h5>
-                                <p>Enter the number of memory frames (1-10). More frames typically result in fewer page faults but use more memory. Common values for educational examples are 3-4 frames.</p>
-                                <div class="tip">
-                                    <strong>💡 Tip:</strong> Start with 3 frames to see clear FIFO behavior, then experiment with different values.
-                                </div>
-                            </div>
-                            
-                            <div class="instruction-step">
-                                <h5>Page Reference String</h5>
-                                <p>Enter a sequence of page numbers separated by commas (e.g., "1,2,3,4,1,2,5"). These represent the pages that a program requests in order.</p>
-                                <div class="tip">
-                                    <strong>💡 Tip:</strong> Try the classic example: "1,2,3,4,1,2,5,1,2,3,4,5" with 3 frames.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="instruction-category">
-                            <h4>🎮 Animation Controls</h4>
-                            <div class="instruction-step">
-                                <h5>Automatic Animation</h5>
-                                <p><strong>Start:</strong> Begins automatic step-by-step processing of page references.</p>
-                                <p><strong>Pause:</strong> Stops automatic animation while preserving current state.</p>
-                                <p><strong>Speed Control:</strong> Adjust how fast automatic animation progresses (100ms to 3000ms per step).</p>
-                            </div>
-                            
-                            <div class="instruction-step">
-                                <h5>Manual Control</h5>
-                                <p><strong>Step Forward:</strong> Process the next page reference manually.</p>
-                                <p><strong>Step Backward:</strong> Return to the previous step to review.</p>
-                                <p><strong>Keyboard Shortcuts:</strong> Use Space (Start/Pause), Arrow keys (Step), Home/End (Jump to start/end).</p>
-                            </div>
-                        </div>
-
-                        <div class="instruction-category">
-                            <h4>📊 Understanding the Visualization</h4>
-                            <div class="instruction-step">
-                                <h5>Memory Frame Display</h5>
-                                <p>Each rectangle represents a memory frame. Frames are numbered (F0, F1, F2, etc.) and show their current contents.</p>
-                                <ul>
-                                    <li><strong>Empty frames</strong> display "Empty"</li>
-                                    <li><strong>Occupied frames</strong> show the page number</li>
-                                    <li><strong>FIFO indicator</strong> shows "← Next" for the oldest frame</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="instruction-step">
-                                <h5>Color Coding System</h5>
-                                <div class="color-guide">
-                                    <div class="color-item">
-                                        <div class="color-sample hit"></div>
-                                        <div class="color-description">
-                                            <strong>Green (Page Hit):</strong> The requested page is already in memory. No page fault occurs.
-                                        </div>
-                                    </div>
-                                    <div class="color-item">
-                                        <div class="color-sample miss"></div>
-                                        <div class="color-description">
-                                            <strong>Red (Page Fault - Empty Frame):</strong> The requested page is not in memory, but there's an empty frame available.
-                                        </div>
-                                    </div>
-                                    <div class="color-item">
-                                        <div class="color-sample replacement"></div>
-                                        <div class="color-description">
-                                            <strong>Yellow (Page Replacement):</strong> The requested page is not in memory and all frames are full. The oldest page is replaced.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="instruction-category">
-                            <h4>📈 Performance Metrics</h4>
-                            <div class="instruction-step">
-                                <h5>Understanding the Statistics</h5>
-                                <p><strong>Page Faults:</strong> Total number of times a requested page was not in memory.</p>
-                                <p><strong>Fault Rate:</strong> Percentage of page references that resulted in faults (lower is better).</p>
-                                <p><strong>Step Counter:</strong> Shows current position in the page reference sequence.</p>
-                            </div>
-                        </div>
-
-                        <div class="instruction-category">
-                            <h4>💾 Export Features</h4>
-                            <div class="instruction-step">
-                                <h5>Screenshot Export</h5>
-                                <p>Capture the current visualization as a PNG image. Useful for presentations or documentation.</p>
-                            </div>
-                            
-                            <div class="instruction-step">
-                                <h5>Execution Trace Export</h5>
-                                <p>Export detailed step-by-step data in CSV or JSON format. Includes all page references, frame states, and performance metrics.</p>
-                            </div>
-                        </div>
+                    
+                    <div class="example-scenario">
+                        <h4>🔄 High Locality</h4>
+                        <p><strong>Frames:</strong> 3 | <strong>References:</strong> 1,1,1,2,2,2,3,3,3</p>
+                        <button class="load-example-btn" data-frames="3" data-references="1,1,1,2,2,2,3,3,3">Load This Example</button>
                     </div>
-
-                    <!-- Algorithm Education Section -->
-                    <div class="algorithm-education">
-                        <h3>Understanding FIFO Page Replacement</h3>
-                        
-                        <div class="education-content">
-                            <div class="concept-explanation">
-                                <h4>What is FIFO Page Replacement?</h4>
-                                <p>The First In, First Out (FIFO) page replacement algorithm is one of the simplest page replacement strategies used in operating systems. When a page fault occurs and all memory frames are occupied, FIFO replaces the page that has been in memory the longest.</p>
-                            </div>
-
-                            <div class="concept-explanation">
-                                <h4>How FIFO Works</h4>
-                                <ol>
-                                    <li><strong>Page Request:</strong> A program requests access to a specific page</li>
-                                    <li><strong>Check Memory:</strong> The system checks if the page is already in memory</li>
-                                    <li><strong>Page Hit:</strong> If found, access the page (no fault)</li>
-                                    <li><strong>Page Fault:</strong> If not found, a page fault occurs</li>
-                                    <li><strong>Find Frame:</strong> Look for an empty frame, or identify the oldest page</li>
-                                    <li><strong>Replace:</strong> Load the new page, replacing the oldest if necessary</li>
-                                </ol>
-                            </div>
-
-                            <div class="concept-explanation">
-                                <h4>FIFO Advantages and Disadvantages</h4>
-                                <div class="pros-cons">
-                                    <div class="pros">
-                                        <h5>✅ Advantages</h5>
-                                        <ul>
-                                            <li>Simple to understand and implement</li>
-                                            <li>Fair - treats all pages equally</li>
-                                            <li>Low overhead - minimal bookkeeping required</li>
-                                        </ul>
-                                    </div>
-                                    <div class="cons">
-                                        <h5>❌ Disadvantages</h5>
-                                        <ul>
-                                            <li>May replace frequently used pages</li>
-                                            <li>Suffers from Belady's Anomaly</li>
-                                            <li>Not optimal for most access patterns</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="concept-explanation">
-                                <h4>Belady's Anomaly</h4>
-                                <p>FIFO can exhibit Belady's Anomaly, where increasing the number of memory frames can actually increase the number of page faults. This counterintuitive behavior makes FIFO less desirable for real-world applications.</p>
-                                <div class="tip">
-                                    <strong>🧪 Experiment:</strong> Try the sequence "1,2,3,4,1,2,5,1,2,3,4,5" with 3 frames, then with 4 frames to see this anomaly in action!
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Common Examples Section -->
-                    <div class="examples-section">
-                        <h3>Try These Examples</h3>
-                        <div class="example-scenarios">
-                            <div class="example-scenario">
-                                <h4>📚 Classic Textbook Example</h4>
-                                <p><strong>Frames:</strong> 3 | <strong>References:</strong> 1,2,3,4,1,2,5,1,2,3,4,5</p>
-                                <p>This is the most common example used in operating systems textbooks. It demonstrates all types of operations and shows Belady's Anomaly.</p>
-                                <button class="load-example-btn" data-frames="3" data-references="1,2,3,4,1,2,5,1,2,3,4,5">Load This Example</button>
-                            </div>
-                            
-                            <div class="example-scenario">
-                                <h4>🔄 High Locality Example</h4>
-                                <p><strong>Frames:</strong> 3 | <strong>References:</strong> 1,1,1,2,2,2,3,3,3</p>
-                                <p>Shows how FIFO performs with high temporal locality (repeated page accesses).</p>
-                                <button class="load-example-btn" data-frames="3" data-references="1,1,1,2,2,2,3,3,3">Load This Example</button>
-                            </div>
-                            
-                            <div class="example-scenario">
-                                <h4>⚡ Worst Case Scenario</h4>
-                                <p><strong>Frames:</strong> 2 | <strong>References:</strong> 1,2,1,2,1,2,1,2</p>
-                                <p>Demonstrates the worst-case behavior where every access results in a page fault.</p>
-                                <button class="load-example-btn" data-frames="2" data-references="1,2,1,2,1,2,1,2">Load This Example</button>
-                            </div>
-                        </div>
+                    
+                    <div class="example-scenario">
+                        <h4>⚡ Worst Case</h4>
+                        <p><strong>Frames:</strong> 2 | <strong>References:</strong> 1,2,1,2,1,2,1,2</p>
+                        <button class="load-example-btn" data-frames="2" data-references="1,2,1,2,1,2,1,2">Load This Example</button>
                     </div>
                 </div>
             </section>
@@ -384,6 +155,7 @@
     <!-- Animation Status Feedback -->
     <div id="animation-status"></div>
 
+    <script src="fifo-algorithm.js"></script>
     <script src="script.js"></script>
     <script src="animation.js"></script>
 </body>
